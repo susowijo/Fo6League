@@ -1,0 +1,2222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LeagueDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LeagueID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Arbitre">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Avertissement">
+          <Key>
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="PlayerID" />
+            <PropertyRef Name="MatchID" />
+            <PropertyRef Name="CartonID" />
+          </Key>
+          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="PlayerID" Type="int" Nullable="false" />
+          <Property Name="MatchID" Type="int" Nullable="false" />
+          <Property Name="CartonID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Carton">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Color" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Day">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evenement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Program" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MatchID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Formation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Goal">
+          <Key>
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="PlayerID" />
+            <PropertyRef Name="MatchID" />
+          </Key>
+          <Property Name="Specificity" Type="int" />
+          <Property Name="Time" Type="int" Nullable="false" />
+          <Property Name="PlayerID" Type="int" Nullable="false" />
+          <Property Name="MatchID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="League">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Logo" Type="varbinary(max)" />
+          <Property Name="LogoMIME" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="PhotoMIME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Match">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MatchDate" Type="datetime" Nullable="false" />
+          <Property Name="NumberOfSpectators" Type="int" />
+          <Property Name="TeamID" Type="int" Nullable="false" />
+          <Property Name="TeamID2" Type="int" Nullable="false" />
+          <Property Name="StadiumID" Type="int" Nullable="false" />
+          <Property Name="DayID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Match_Arbitre">
+          <Key>
+            <PropertyRef Name="MatchID" />
+            <PropertyRef Name="ArbitreID" />
+          </Key>
+          <Property Name="MatchID" Type="int" Nullable="false" />
+          <Property Name="ArbitreID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" Nullable="false" />
+          <Property Name="PhotoMIME" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="AdID" Type="int" />
+          <Property Name="publicitesID" Type="int" />
+          <Property Name="EvenementID" Type="int" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Post" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="Nation" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TeamID" Type="int" Nullable="false" />
+          <Property Name="Dorsa" Type="int" Nullable="false" />
+          <Property Name="Pseudo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="250" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="PhotoMIME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Player_Suspension">
+          <Key>
+            <PropertyRef Name="PlayerID" />
+            <PropertyRef Name="SuspensionID" />
+          </Key>
+          <Property Name="PlayerID" Type="int" Nullable="false" />
+          <Property Name="SuspensionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="publicites">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LeagueID" Type="int" Nullable="false" />
+          <Property Name="Video" Type="varbinary(max)" />
+          <Property Name="VideoMIME" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Review" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="MatchID" Type="int" Nullable="false" />
+          <Property Name="SupporteurID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stadium">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PlaceNumber" Type="int" Nullable="false" />
+          <Property Name="TeamID" Type="int" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="PhotoMIME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Supporteur">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CreateDate" Type="date" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Pseudo" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="250" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="PhotoMIME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Supporteur_Ticket">
+          <Key>
+            <PropertyRef Name="SupporteurID" />
+            <PropertyRef Name="TicketID" />
+          </Key>
+          <Property Name="SupporteurID" Type="int" Nullable="false" />
+          <Property Name="TicketID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Suspension">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumberMatch" Type="int" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="GoalCachs" Type="int" />
+          <Property Name="GoalScores" Type="int" />
+          <Property Name="MatchWins" Type="int" />
+          <Property Name="MatchLosses" Type="int" />
+          <Property Name="MatchsNull" Type="int" />
+          <Property Name="Points" Type="int" />
+          <Property Name="ManagerID" Type="int" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="PhotoMIME" Type="nvarchar" MaxLength="50" />
+          <Property Name="Logo" Type="varbinary(max)" />
+          <Property Name="LogoMIME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Team_Formation">
+          <Key>
+            <PropertyRef Name="FormationID" />
+            <PropertyRef Name="TeamID" />
+          </Key>
+          <Property Name="FormationID" Type="int" Nullable="false" />
+          <Property Name="TeamID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TempsForts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="MatchID" Type="int" Nullable="false" />
+          <Property Name="Video" Type="varbinary(max)" />
+          <Property Name="VideoMIME" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quanttity" Type="int" Nullable="false" />
+          <Property Name="Type_ticketID" Type="int" Nullable="false" />
+          <Property Name="MatchID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ToBeReplaced">
+          <Key>
+            <PropertyRef Name="PlayerID" />
+            <PropertyRef Name="MatchID" />
+          </Key>
+          <Property Name="PlayerID" Type="int" Nullable="false" />
+          <Property Name="MatchID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ToBeSubstitute">
+          <Key>
+            <PropertyRef Name="PlayerID" />
+            <PropertyRef Name="MatchID" />
+          </Key>
+          <Property Name="PlayerID" Type="int" Nullable="false" />
+          <Property Name="MatchID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ToBeTute">
+          <Key>
+            <PropertyRef Name="PlayerID" />
+            <PropertyRef Name="MatchID" />
+          </Key>
+          <Property Name="PlayerID" Type="int" Nullable="false" />
+          <Property Name="MatchID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trainer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TeamID" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="PhotoMIME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Transfert">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="ManagerID" Type="int" Nullable="false" />
+          <Property Name="ManagerID2" Type="int" Nullable="false" />
+          <Property Name="PlayerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type_ticket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <Association Name="FKAd986610">
+          <End Role="League" Type="Self.League" Multiplicity="1" />
+          <End Role="Ad" Type="Self.Ad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="League">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ad">
+              <PropertyRef Name="LeagueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKAvertissem112910">
+          <End Role="Match" Type="Self.Match" Multiplicity="1" />
+          <End Role="Avertissement" Type="Self.Avertissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avertissement">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKAvertissem459964">
+          <End Role="Carton" Type="Self.Carton" Multiplicity="1" />
+          <End Role="Avertissement" Type="Self.Avertissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carton">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avertissement">
+              <PropertyRef Name="CartonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKAvertissem741880">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Avertissement" Type="Self.Avertissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avertissement">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEvenement936763">
+          <End Role="Match" Type="Self.Match" Multiplicity="1" />
+          <End Role="Evenement" Type="Self.Evenement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Evenement">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKGoal111870">
+          <End Role="Match" Type="Self.Match" Multiplicity="1" />
+          <End Role="Goal" Type="Self.Goal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Goal">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKGoal259159">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Goal" Type="Self.Goal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Goal">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKMatch_Arbi854561">
+          <End Role="Match" Type="Self.Match" Multiplicity="1" />
+          <End Role="Match_Arbitre" Type="Self.Match_Arbitre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Match_Arbitre">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKMatch_Arbi917064">
+          <End Role="Arbitre" Type="Self.Arbitre" Multiplicity="1" />
+          <End Role="Match_Arbitre" Type="Self.Match_Arbitre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arbitre">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Match_Arbitre">
+              <PropertyRef Name="ArbitreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKMatch127456">
+          <End Role="Team" Type="Self.Team" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKMatch149729">
+          <End Role="Stadium" Type="Self.Stadium" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stadium">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="StadiumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKMatch63941">
+          <End Role="Team" Type="Self.Team" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="TeamID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKMatch994206">
+          <End Role="Day" Type="Self.Day" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Day">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="DayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPicture169779">
+          <End Role="publicites" Type="Self.publicites" Multiplicity="0..1" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publicites">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="publicitesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPicture952090">
+          <End Role="Ad" Type="Self.Ad" Multiplicity="0..1" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="AdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPicture973857">
+          <End Role="Evenement" Type="Self.Evenement" Multiplicity="0..1" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evenement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="EvenementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPlayer_Sus434215">
+          <End Role="Suspension" Type="Self.Suspension" Multiplicity="1" />
+          <End Role="Player_Suspension" Type="Self.Player_Suspension" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suspension">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Player_Suspension">
+              <PropertyRef Name="SuspensionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPlayer_Sus65599">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Player_Suspension" Type="Self.Player_Suspension" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Player_Suspension">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPlayer840970">
+          <End Role="Team" Type="Self.Team" Multiplicity="1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKpublicites132669">
+          <End Role="League" Type="Self.League" Multiplicity="1" />
+          <End Role="publicites" Type="Self.publicites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="League">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="publicites">
+              <PropertyRef Name="LeagueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRating243808">
+          <End Role="Supporteur" Type="Self.Supporteur" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supporteur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="SupporteurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRating397714">
+          <End Role="Match" Type="Self.Match" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKStadium202267">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Stadium" Type="Self.Stadium" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Stadium">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSupporteur703134">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="Supporteur_Ticket" Type="Self.Supporteur_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supporteur_Ticket">
+              <PropertyRef Name="TicketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSupporteur775901">
+          <End Role="Supporteur" Type="Self.Supporteur" Multiplicity="1" />
+          <End Role="Supporteur_Ticket" Type="Self.Supporteur_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supporteur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supporteur_Ticket">
+              <PropertyRef Name="SupporteurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTeam_Forma423397">
+          <End Role="Formation" Type="Self.Formation" Multiplicity="1" />
+          <End Role="Team_Formation" Type="Self.Team_Formation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Formation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Team_Formation">
+              <PropertyRef Name="FormationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTeam_Forma839589">
+          <End Role="Team" Type="Self.Team" Multiplicity="1" />
+          <End Role="Team_Formation" Type="Self.Team_Formation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Team_Formation">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTeam183033">
+          <End Role="Manager" Type="Self.Manager" Multiplicity="0..1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manager">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTempsForts475942">
+          <End Role="Match" Type="Self.Match" Multiplicity="1" />
+          <End Role="TempsForts" Type="Self.TempsForts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TempsForts">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTicket539457">
+          <End Role="Match" Type="Self.Match" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTicket670194">
+          <End Role="Type_ticket" Type="Self.Type_ticket" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_ticket">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="Type_ticketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKToBeReplac588562">
+          <End Role="Match" Type="Self.Match" Multiplicity="1" />
+          <End Role="ToBeReplaced" Type="Self.ToBeReplaced" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ToBeReplaced">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKToBeReplac959591">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="ToBeReplaced" Type="Self.ToBeReplaced" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ToBeReplaced">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKToBeSubsti692027">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="ToBeSubstitute" Type="Self.ToBeSubstitute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ToBeSubstitute">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKToBeSubsti908533">
+          <End Role="Match" Type="Self.Match" Multiplicity="1" />
+          <End Role="ToBeSubstitute" Type="Self.ToBeSubstitute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ToBeSubstitute">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKToBeTute295315">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="ToBeTute" Type="Self.ToBeTute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ToBeTute">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKToBeTute924285">
+          <End Role="Match" Type="Self.Match" Multiplicity="1" />
+          <End Role="ToBeTute" Type="Self.ToBeTute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ToBeTute">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTrainer802788">
+          <End Role="Team" Type="Self.Team" Multiplicity="1" />
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trainer">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTransfert129094">
+          <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+          <End Role="Transfert" Type="Self.Transfert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manager">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transfert">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTransfert179754">
+          <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+          <End Role="Transfert" Type="Self.Transfert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manager">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transfert">
+              <PropertyRef Name="ManagerID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTransfert309227">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Transfert" Type="Self.Transfert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transfert">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LeagueDBModelStoreContainer">
+          <EntitySet Name="Ad" EntityType="Self.Ad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Arbitre" EntityType="Self.Arbitre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Avertissement" EntityType="Self.Avertissement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carton" EntityType="Self.Carton" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Day" EntityType="Self.Day" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evenement" EntityType="Self.Evenement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Formation" EntityType="Self.Formation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Goal" EntityType="Self.Goal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="League" EntityType="Self.League" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Match" EntityType="Self.Match" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Match_Arbitre" EntityType="Self.Match_Arbitre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Player_Suspension" EntityType="Self.Player_Suspension" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="publicites" EntityType="Self.publicites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stadium" EntityType="Self.Stadium" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supporteur" EntityType="Self.Supporteur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supporteur_Ticket" EntityType="Self.Supporteur_Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suspension" EntityType="Self.Suspension" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Team_Formation" EntityType="Self.Team_Formation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TempsForts" EntityType="Self.TempsForts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ToBeReplaced" EntityType="Self.ToBeReplaced" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ToBeSubstitute" EntityType="Self.ToBeSubstitute" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ToBeTute" EntityType="Self.ToBeTute" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trainer" EntityType="Self.Trainer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transfert" EntityType="Self.Transfert" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_ticket" EntityType="Self.Type_ticket" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FKAd986610" Association="Self.FKAd986610">
+            <End Role="League" EntitySet="League" />
+            <End Role="Ad" EntitySet="Ad" />
+          </AssociationSet>
+          <AssociationSet Name="FKAvertissem112910" Association="Self.FKAvertissem112910">
+            <End Role="Match" EntitySet="Match" />
+            <End Role="Avertissement" EntitySet="Avertissement" />
+          </AssociationSet>
+          <AssociationSet Name="FKAvertissem459964" Association="Self.FKAvertissem459964">
+            <End Role="Carton" EntitySet="Carton" />
+            <End Role="Avertissement" EntitySet="Avertissement" />
+          </AssociationSet>
+          <AssociationSet Name="FKAvertissem741880" Association="Self.FKAvertissem741880">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Avertissement" EntitySet="Avertissement" />
+          </AssociationSet>
+          <AssociationSet Name="FKEvenement936763" Association="Self.FKEvenement936763">
+            <End Role="Match" EntitySet="Match" />
+            <End Role="Evenement" EntitySet="Evenement" />
+          </AssociationSet>
+          <AssociationSet Name="FKGoal111870" Association="Self.FKGoal111870">
+            <End Role="Match" EntitySet="Match" />
+            <End Role="Goal" EntitySet="Goal" />
+          </AssociationSet>
+          <AssociationSet Name="FKGoal259159" Association="Self.FKGoal259159">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Goal" EntitySet="Goal" />
+          </AssociationSet>
+          <AssociationSet Name="FKMatch_Arbi854561" Association="Self.FKMatch_Arbi854561">
+            <End Role="Match" EntitySet="Match" />
+            <End Role="Match_Arbitre" EntitySet="Match_Arbitre" />
+          </AssociationSet>
+          <AssociationSet Name="FKMatch_Arbi917064" Association="Self.FKMatch_Arbi917064">
+            <End Role="Arbitre" EntitySet="Arbitre" />
+            <End Role="Match_Arbitre" EntitySet="Match_Arbitre" />
+          </AssociationSet>
+          <AssociationSet Name="FKMatch127456" Association="Self.FKMatch127456">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FKMatch149729" Association="Self.FKMatch149729">
+            <End Role="Stadium" EntitySet="Stadium" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FKMatch63941" Association="Self.FKMatch63941">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FKMatch994206" Association="Self.FKMatch994206">
+            <End Role="Day" EntitySet="Day" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FKPicture169779" Association="Self.FKPicture169779">
+            <End Role="publicites" EntitySet="publicites" />
+            <End Role="Picture" EntitySet="Picture" />
+          </AssociationSet>
+          <AssociationSet Name="FKPicture952090" Association="Self.FKPicture952090">
+            <End Role="Ad" EntitySet="Ad" />
+            <End Role="Picture" EntitySet="Picture" />
+          </AssociationSet>
+          <AssociationSet Name="FKPicture973857" Association="Self.FKPicture973857">
+            <End Role="Evenement" EntitySet="Evenement" />
+            <End Role="Picture" EntitySet="Picture" />
+          </AssociationSet>
+          <AssociationSet Name="FKPlayer_Sus434215" Association="Self.FKPlayer_Sus434215">
+            <End Role="Suspension" EntitySet="Suspension" />
+            <End Role="Player_Suspension" EntitySet="Player_Suspension" />
+          </AssociationSet>
+          <AssociationSet Name="FKPlayer_Sus65599" Association="Self.FKPlayer_Sus65599">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Player_Suspension" EntitySet="Player_Suspension" />
+          </AssociationSet>
+          <AssociationSet Name="FKPlayer840970" Association="Self.FKPlayer840970">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="FKpublicites132669" Association="Self.FKpublicites132669">
+            <End Role="League" EntitySet="League" />
+            <End Role="publicites" EntitySet="publicites" />
+          </AssociationSet>
+          <AssociationSet Name="FKRating243808" Association="Self.FKRating243808">
+            <End Role="Supporteur" EntitySet="Supporteur" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FKRating397714" Association="Self.FKRating397714">
+            <End Role="Match" EntitySet="Match" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FKStadium202267" Association="Self.FKStadium202267">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Stadium" EntitySet="Stadium" />
+          </AssociationSet>
+          <AssociationSet Name="FKSupporteur703134" Association="Self.FKSupporteur703134">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="Supporteur_Ticket" EntitySet="Supporteur_Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FKSupporteur775901" Association="Self.FKSupporteur775901">
+            <End Role="Supporteur" EntitySet="Supporteur" />
+            <End Role="Supporteur_Ticket" EntitySet="Supporteur_Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FKTeam_Forma423397" Association="Self.FKTeam_Forma423397">
+            <End Role="Formation" EntitySet="Formation" />
+            <End Role="Team_Formation" EntitySet="Team_Formation" />
+          </AssociationSet>
+          <AssociationSet Name="FKTeam_Forma839589" Association="Self.FKTeam_Forma839589">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Team_Formation" EntitySet="Team_Formation" />
+          </AssociationSet>
+          <AssociationSet Name="FKTeam183033" Association="Self.FKTeam183033">
+            <End Role="Manager" EntitySet="Manager" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+          <AssociationSet Name="FKTempsForts475942" Association="Self.FKTempsForts475942">
+            <End Role="Match" EntitySet="Match" />
+            <End Role="TempsForts" EntitySet="TempsForts" />
+          </AssociationSet>
+          <AssociationSet Name="FKTicket539457" Association="Self.FKTicket539457">
+            <End Role="Match" EntitySet="Match" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FKTicket670194" Association="Self.FKTicket670194">
+            <End Role="Type_ticket" EntitySet="Type_ticket" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FKToBeReplac588562" Association="Self.FKToBeReplac588562">
+            <End Role="Match" EntitySet="Match" />
+            <End Role="ToBeReplaced" EntitySet="ToBeReplaced" />
+          </AssociationSet>
+          <AssociationSet Name="FKToBeReplac959591" Association="Self.FKToBeReplac959591">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="ToBeReplaced" EntitySet="ToBeReplaced" />
+          </AssociationSet>
+          <AssociationSet Name="FKToBeSubsti692027" Association="Self.FKToBeSubsti692027">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="ToBeSubstitute" EntitySet="ToBeSubstitute" />
+          </AssociationSet>
+          <AssociationSet Name="FKToBeSubsti908533" Association="Self.FKToBeSubsti908533">
+            <End Role="Match" EntitySet="Match" />
+            <End Role="ToBeSubstitute" EntitySet="ToBeSubstitute" />
+          </AssociationSet>
+          <AssociationSet Name="FKToBeTute295315" Association="Self.FKToBeTute295315">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="ToBeTute" EntitySet="ToBeTute" />
+          </AssociationSet>
+          <AssociationSet Name="FKToBeTute924285" Association="Self.FKToBeTute924285">
+            <End Role="Match" EntitySet="Match" />
+            <End Role="ToBeTute" EntitySet="ToBeTute" />
+          </AssociationSet>
+          <AssociationSet Name="FKTrainer802788" Association="Self.FKTrainer802788">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Trainer" EntitySet="Trainer" />
+          </AssociationSet>
+          <AssociationSet Name="FKTransfert129094" Association="Self.FKTransfert129094">
+            <End Role="Manager" EntitySet="Manager" />
+            <End Role="Transfert" EntitySet="Transfert" />
+          </AssociationSet>
+          <AssociationSet Name="FKTransfert179754" Association="Self.FKTransfert179754">
+            <End Role="Manager" EntitySet="Manager" />
+            <End Role="Transfert" EntitySet="Transfert" />
+          </AssociationSet>
+          <AssociationSet Name="FKTransfert309227" Association="Self.FKTransfert309227">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Transfert" EntitySet="Transfert" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LeagueDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="LeagueDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ads" EntityType="LeagueDBModel.Ad" />
+          <EntitySet Name="Arbitres" EntityType="LeagueDBModel.Arbitre" />
+          <EntitySet Name="Avertissements" EntityType="LeagueDBModel.Avertissement" />
+          <EntitySet Name="Cartons" EntityType="LeagueDBModel.Carton" />
+          <EntitySet Name="Days" EntityType="LeagueDBModel.Day" />
+          <EntitySet Name="Evenements" EntityType="LeagueDBModel.Evenement" />
+          <EntitySet Name="Formations" EntityType="LeagueDBModel.Formation" />
+          <EntitySet Name="Goals" EntityType="LeagueDBModel.Goal" />
+          <EntitySet Name="Leagues" EntityType="LeagueDBModel.League" />
+          <EntitySet Name="Managers" EntityType="LeagueDBModel.Manager" />
+          <EntitySet Name="Matches" EntityType="LeagueDBModel.Match" />
+          <EntitySet Name="Pictures" EntityType="LeagueDBModel.Picture" />
+          <EntitySet Name="Players" EntityType="LeagueDBModel.Player" />
+          <EntitySet Name="publicites" EntityType="LeagueDBModel.publicite" />
+          <EntitySet Name="Ratings" EntityType="LeagueDBModel.Rating" />
+          <EntitySet Name="Stadia" EntityType="LeagueDBModel.Stadium" />
+          <EntitySet Name="Supporteurs" EntityType="LeagueDBModel.Supporteur" />
+          <EntitySet Name="Supporteur_Ticket" EntityType="LeagueDBModel.Supporteur_Ticket" />
+          <EntitySet Name="Suspensions" EntityType="LeagueDBModel.Suspension" />
+          <EntitySet Name="Teams" EntityType="LeagueDBModel.Team" />
+          <EntitySet Name="TempsForts" EntityType="LeagueDBModel.TempsFort" />
+          <EntitySet Name="Tickets" EntityType="LeagueDBModel.Ticket" />
+          <EntitySet Name="Trainers" EntityType="LeagueDBModel.Trainer" />
+          <EntitySet Name="Transferts" EntityType="LeagueDBModel.Transfert" />
+          <EntitySet Name="Type_ticket" EntityType="LeagueDBModel.Type_ticket" />
+          <AssociationSet Name="FKAd986610" Association="LeagueDBModel.FKAd986610">
+            <End Role="League" EntitySet="Leagues" />
+            <End Role="Ad" EntitySet="Ads" />
+          </AssociationSet>
+          <AssociationSet Name="FKPicture952090" Association="LeagueDBModel.FKPicture952090">
+            <End Role="Ad" EntitySet="Ads" />
+            <End Role="Picture" EntitySet="Pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FKAvertissem112910" Association="LeagueDBModel.FKAvertissem112910">
+            <End Role="Match" EntitySet="Matches" />
+            <End Role="Avertissement" EntitySet="Avertissements" />
+          </AssociationSet>
+          <AssociationSet Name="FKAvertissem459964" Association="LeagueDBModel.FKAvertissem459964">
+            <End Role="Carton" EntitySet="Cartons" />
+            <End Role="Avertissement" EntitySet="Avertissements" />
+          </AssociationSet>
+          <AssociationSet Name="FKAvertissem741880" Association="LeagueDBModel.FKAvertissem741880">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Avertissement" EntitySet="Avertissements" />
+          </AssociationSet>
+          <AssociationSet Name="FKMatch994206" Association="LeagueDBModel.FKMatch994206">
+            <End Role="Day" EntitySet="Days" />
+            <End Role="Match" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FKEvenement936763" Association="LeagueDBModel.FKEvenement936763">
+            <End Role="Match" EntitySet="Matches" />
+            <End Role="Evenement" EntitySet="Evenements" />
+          </AssociationSet>
+          <AssociationSet Name="FKPicture973857" Association="LeagueDBModel.FKPicture973857">
+            <End Role="Evenement" EntitySet="Evenements" />
+            <End Role="Picture" EntitySet="Pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FKGoal111870" Association="LeagueDBModel.FKGoal111870">
+            <End Role="Match" EntitySet="Matches" />
+            <End Role="Goal" EntitySet="Goals" />
+          </AssociationSet>
+          <AssociationSet Name="FKGoal259159" Association="LeagueDBModel.FKGoal259159">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Goal" EntitySet="Goals" />
+          </AssociationSet>
+          <AssociationSet Name="FKpublicites132669" Association="LeagueDBModel.FKpublicites132669">
+            <End Role="League" EntitySet="Leagues" />
+            <End Role="publicite" EntitySet="publicites" />
+          </AssociationSet>
+          <AssociationSet Name="FKTeam183033" Association="LeagueDBModel.FKTeam183033">
+            <End Role="Manager" EntitySet="Managers" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="FKTransfert129094" Association="LeagueDBModel.FKTransfert129094">
+            <End Role="Manager" EntitySet="Managers" />
+            <End Role="Transfert" EntitySet="Transferts" />
+          </AssociationSet>
+          <AssociationSet Name="FKTransfert179754" Association="LeagueDBModel.FKTransfert179754">
+            <End Role="Manager" EntitySet="Managers" />
+            <End Role="Transfert" EntitySet="Transferts" />
+          </AssociationSet>
+          <AssociationSet Name="FKMatch127456" Association="LeagueDBModel.FKMatch127456">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Match" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FKMatch149729" Association="LeagueDBModel.FKMatch149729">
+            <End Role="Stadium" EntitySet="Stadia" />
+            <End Role="Match" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FKMatch63941" Association="LeagueDBModel.FKMatch63941">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Match" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FKRating397714" Association="LeagueDBModel.FKRating397714">
+            <End Role="Match" EntitySet="Matches" />
+            <End Role="Rating" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FKTempsForts475942" Association="LeagueDBModel.FKTempsForts475942">
+            <End Role="Match" EntitySet="Matches" />
+            <End Role="TempsFort" EntitySet="TempsForts" />
+          </AssociationSet>
+          <AssociationSet Name="FKTicket539457" Association="LeagueDBModel.FKTicket539457">
+            <End Role="Match" EntitySet="Matches" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FKPicture169779" Association="LeagueDBModel.FKPicture169779">
+            <End Role="publicite" EntitySet="publicites" />
+            <End Role="Picture" EntitySet="Pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FKPlayer840970" Association="LeagueDBModel.FKPlayer840970">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Player" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="FKTransfert309227" Association="LeagueDBModel.FKTransfert309227">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Transfert" EntitySet="Transferts" />
+          </AssociationSet>
+          <AssociationSet Name="FKRating243808" Association="LeagueDBModel.FKRating243808">
+            <End Role="Supporteur" EntitySet="Supporteurs" />
+            <End Role="Rating" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FKStadium202267" Association="LeagueDBModel.FKStadium202267">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Stadium" EntitySet="Stadia" />
+          </AssociationSet>
+          <AssociationSet Name="FKSupporteur775901" Association="LeagueDBModel.FKSupporteur775901">
+            <End Role="Supporteur" EntitySet="Supporteurs" />
+            <End Role="Supporteur_Ticket" EntitySet="Supporteur_Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FKSupporteur703134" Association="LeagueDBModel.FKSupporteur703134">
+            <End Role="Ticket" EntitySet="Tickets" />
+            <End Role="Supporteur_Ticket" EntitySet="Supporteur_Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FKTrainer802788" Association="LeagueDBModel.FKTrainer802788">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Trainer" EntitySet="Trainers" />
+          </AssociationSet>
+          <AssociationSet Name="FKTicket670194" Association="LeagueDBModel.FKTicket670194">
+            <End Role="Type_ticket" EntitySet="Type_ticket" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="Match_Arbitre" Association="LeagueDBModel.Match_Arbitre">
+            <End Role="Match" EntitySet="Matches" />
+            <End Role="Arbitre" EntitySet="Arbitres" />
+          </AssociationSet>
+          <AssociationSet Name="Player_Suspension" Association="LeagueDBModel.Player_Suspension">
+            <End Role="Suspension" EntitySet="Suspensions" />
+            <End Role="Player" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="Team_Formation" Association="LeagueDBModel.Team_Formation">
+            <End Role="Formation" EntitySet="Formations" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="ToBeReplaced" Association="LeagueDBModel.ToBeReplaced">
+            <End Role="Match" EntitySet="Matches" />
+            <End Role="Player" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="ToBeSubstitute" Association="LeagueDBModel.ToBeSubstitute">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Match" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="ToBeTute" Association="LeagueDBModel.ToBeTute">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Match" EntitySet="Matches" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Ad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LeagueID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="League" Relationship="LeagueDBModel.FKAd986610" FromRole="Ad" ToRole="League" />
+          <NavigationProperty Name="Pictures" Relationship="LeagueDBModel.FKPicture952090" FromRole="Ad" ToRole="Picture" />
+        </EntityType>
+        <EntityType Name="Arbitre">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Matches" Relationship="LeagueDBModel.Match_Arbitre" FromRole="Arbitre" ToRole="Match" />
+        </EntityType>
+        <EntityType Name="Avertissement">
+          <Key>
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="PlayerID" />
+            <PropertyRef Name="MatchID" />
+            <PropertyRef Name="CartonID" />
+          </Key>
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PlayerID" Type="Int32" Nullable="false" />
+          <Property Name="MatchID" Type="Int32" Nullable="false" />
+          <Property Name="CartonID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Match" Relationship="LeagueDBModel.FKAvertissem112910" FromRole="Avertissement" ToRole="Match" />
+          <NavigationProperty Name="Carton" Relationship="LeagueDBModel.FKAvertissem459964" FromRole="Avertissement" ToRole="Carton" />
+          <NavigationProperty Name="Player" Relationship="LeagueDBModel.FKAvertissem741880" FromRole="Avertissement" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Carton">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Color" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Avertissements" Relationship="LeagueDBModel.FKAvertissem459964" FromRole="Carton" ToRole="Avertissement" />
+        </EntityType>
+        <EntityType Name="Day">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Matches" Relationship="LeagueDBModel.FKMatch994206" FromRole="Day" ToRole="Match" />
+        </EntityType>
+        <EntityType Name="Evenement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Program" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MatchID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Match" Relationship="LeagueDBModel.FKEvenement936763" FromRole="Evenement" ToRole="Match" />
+          <NavigationProperty Name="Pictures" Relationship="LeagueDBModel.FKPicture973857" FromRole="Evenement" ToRole="Picture" />
+        </EntityType>
+        <EntityType Name="Formation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Teams" Relationship="LeagueDBModel.Team_Formation" FromRole="Formation" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="Goal">
+          <Key>
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="PlayerID" />
+            <PropertyRef Name="MatchID" />
+          </Key>
+          <Property Name="Specificity" Type="Int32" />
+          <Property Name="Time" Type="Int32" Nullable="false" />
+          <Property Name="PlayerID" Type="Int32" Nullable="false" />
+          <Property Name="MatchID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Match" Relationship="LeagueDBModel.FKGoal111870" FromRole="Goal" ToRole="Match" />
+          <NavigationProperty Name="Player" Relationship="LeagueDBModel.FKGoal259159" FromRole="Goal" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="League">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LogoMIME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ads" Relationship="LeagueDBModel.FKAd986610" FromRole="League" ToRole="Ad" />
+          <NavigationProperty Name="publicites" Relationship="LeagueDBModel.FKpublicites132669" FromRole="League" ToRole="publicite" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PhotoMIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Teams" Relationship="LeagueDBModel.FKTeam183033" FromRole="Manager" ToRole="Team" />
+          <NavigationProperty Name="Transferts" Relationship="LeagueDBModel.FKTransfert129094" FromRole="Manager" ToRole="Transfert" />
+          <NavigationProperty Name="Transferts1" Relationship="LeagueDBModel.FKTransfert179754" FromRole="Manager" ToRole="Transfert" />
+        </EntityType>
+        <EntityType Name="Match">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MatchDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NumberOfSpectators" Type="Int32" />
+          <Property Name="TeamID" Type="Int32" Nullable="false" />
+          <Property Name="TeamID2" Type="Int32" Nullable="false" />
+          <Property Name="StadiumID" Type="Int32" Nullable="false" />
+          <Property Name="DayID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Avertissements" Relationship="LeagueDBModel.FKAvertissem112910" FromRole="Match" ToRole="Avertissement" />
+          <NavigationProperty Name="Day" Relationship="LeagueDBModel.FKMatch994206" FromRole="Match" ToRole="Day" />
+          <NavigationProperty Name="Evenements" Relationship="LeagueDBModel.FKEvenement936763" FromRole="Match" ToRole="Evenement" />
+          <NavigationProperty Name="Goals" Relationship="LeagueDBModel.FKGoal111870" FromRole="Match" ToRole="Goal" />
+          <NavigationProperty Name="Team" Relationship="LeagueDBModel.FKMatch127456" FromRole="Match" ToRole="Team" />
+          <NavigationProperty Name="Stadium" Relationship="LeagueDBModel.FKMatch149729" FromRole="Match" ToRole="Stadium" />
+          <NavigationProperty Name="Team1" Relationship="LeagueDBModel.FKMatch63941" FromRole="Match" ToRole="Team" />
+          <NavigationProperty Name="Ratings" Relationship="LeagueDBModel.FKRating397714" FromRole="Match" ToRole="Rating" />
+          <NavigationProperty Name="TempsForts" Relationship="LeagueDBModel.FKTempsForts475942" FromRole="Match" ToRole="TempsFort" />
+          <NavigationProperty Name="Tickets" Relationship="LeagueDBModel.FKTicket539457" FromRole="Match" ToRole="Ticket" />
+          <NavigationProperty Name="Arbitres" Relationship="LeagueDBModel.Match_Arbitre" FromRole="Match" ToRole="Arbitre" />
+          <NavigationProperty Name="Players" Relationship="LeagueDBModel.ToBeReplaced" FromRole="Match" ToRole="Player" />
+          <NavigationProperty Name="Players1" Relationship="LeagueDBModel.ToBeSubstitute" FromRole="Match" ToRole="Player" />
+          <NavigationProperty Name="Players2" Relationship="LeagueDBModel.ToBeTute" FromRole="Match" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="PhotoMIME" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AdID" Type="Int32" />
+          <Property Name="publicitesID" Type="Int32" />
+          <Property Name="EvenementID" Type="Int32" />
+          <NavigationProperty Name="Ad" Relationship="LeagueDBModel.FKPicture952090" FromRole="Picture" ToRole="Ad" />
+          <NavigationProperty Name="Evenement" Relationship="LeagueDBModel.FKPicture973857" FromRole="Picture" ToRole="Evenement" />
+          <NavigationProperty Name="publicite" Relationship="LeagueDBModel.FKPicture169779" FromRole="Picture" ToRole="publicite" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Post" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Nation" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TeamID" Type="Int32" Nullable="false" />
+          <Property Name="Dorsa" Type="Int32" Nullable="false" />
+          <Property Name="Pseudo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PhotoMIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Avertissements" Relationship="LeagueDBModel.FKAvertissem741880" FromRole="Player" ToRole="Avertissement" />
+          <NavigationProperty Name="Goals" Relationship="LeagueDBModel.FKGoal259159" FromRole="Player" ToRole="Goal" />
+          <NavigationProperty Name="Team" Relationship="LeagueDBModel.FKPlayer840970" FromRole="Player" ToRole="Team" />
+          <NavigationProperty Name="Transferts" Relationship="LeagueDBModel.FKTransfert309227" FromRole="Player" ToRole="Transfert" />
+          <NavigationProperty Name="Suspensions" Relationship="LeagueDBModel.Player_Suspension" FromRole="Player" ToRole="Suspension" />
+          <NavigationProperty Name="Matches" Relationship="LeagueDBModel.ToBeReplaced" FromRole="Player" ToRole="Match" />
+          <NavigationProperty Name="Matches1" Relationship="LeagueDBModel.ToBeSubstitute" FromRole="Player" ToRole="Match" />
+          <NavigationProperty Name="Matches2" Relationship="LeagueDBModel.ToBeTute" FromRole="Player" ToRole="Match" />
+        </EntityType>
+        <EntityType Name="publicite">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LeagueID" Type="Int32" Nullable="false" />
+          <Property Name="Video" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="VideoMIME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="League" Relationship="LeagueDBModel.FKpublicites132669" FromRole="publicite" ToRole="League" />
+          <NavigationProperty Name="Pictures" Relationship="LeagueDBModel.FKPicture169779" FromRole="publicite" ToRole="Picture" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Review" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MatchID" Type="Int32" Nullable="false" />
+          <Property Name="SupporteurID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Match" Relationship="LeagueDBModel.FKRating397714" FromRole="Rating" ToRole="Match" />
+          <NavigationProperty Name="Supporteur" Relationship="LeagueDBModel.FKRating243808" FromRole="Rating" ToRole="Supporteur" />
+        </EntityType>
+        <EntityType Name="Stadium">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PlaceNumber" Type="Int32" Nullable="false" />
+          <Property Name="TeamID" Type="Int32" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PhotoMIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Matches" Relationship="LeagueDBModel.FKMatch149729" FromRole="Stadium" ToRole="Match" />
+          <NavigationProperty Name="Team" Relationship="LeagueDBModel.FKStadium202267" FromRole="Stadium" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="Supporteur">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Pseudo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PhotoMIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ratings" Relationship="LeagueDBModel.FKRating243808" FromRole="Supporteur" ToRole="Rating" />
+          <NavigationProperty Name="Supporteur_Ticket" Relationship="LeagueDBModel.FKSupporteur775901" FromRole="Supporteur" ToRole="Supporteur_Ticket" />
+        </EntityType>
+        <EntityType Name="Supporteur_Ticket">
+          <Key>
+            <PropertyRef Name="SupporteurID" />
+            <PropertyRef Name="TicketID" />
+          </Key>
+          <Property Name="SupporteurID" Type="Int32" Nullable="false" />
+          <Property Name="TicketID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Supporteur" Relationship="LeagueDBModel.FKSupporteur775901" FromRole="Supporteur_Ticket" ToRole="Supporteur" />
+          <NavigationProperty Name="Ticket" Relationship="LeagueDBModel.FKSupporteur703134" FromRole="Supporteur_Ticket" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Suspension">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumberMatch" Type="Int32" Nullable="false" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Players" Relationship="LeagueDBModel.Player_Suspension" FromRole="Suspension" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="GoalCachs" Type="Int32" />
+          <Property Name="GoalScores" Type="Int32" />
+          <Property Name="MatchWins" Type="Int32" />
+          <Property Name="MatchLosses" Type="Int32" />
+          <Property Name="MatchsNull" Type="Int32" />
+          <Property Name="Points" Type="Int32" />
+          <Property Name="ManagerID" Type="Int32" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PhotoMIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LogoMIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Manager" Relationship="LeagueDBModel.FKTeam183033" FromRole="Team" ToRole="Manager" />
+          <NavigationProperty Name="Matches" Relationship="LeagueDBModel.FKMatch127456" FromRole="Team" ToRole="Match" />
+          <NavigationProperty Name="Matches1" Relationship="LeagueDBModel.FKMatch63941" FromRole="Team" ToRole="Match" />
+          <NavigationProperty Name="Players" Relationship="LeagueDBModel.FKPlayer840970" FromRole="Team" ToRole="Player" />
+          <NavigationProperty Name="Stadia" Relationship="LeagueDBModel.FKStadium202267" FromRole="Team" ToRole="Stadium" />
+          <NavigationProperty Name="Trainers" Relationship="LeagueDBModel.FKTrainer802788" FromRole="Team" ToRole="Trainer" />
+          <NavigationProperty Name="Formations" Relationship="LeagueDBModel.Team_Formation" FromRole="Team" ToRole="Formation" />
+        </EntityType>
+        <EntityType Name="TempsFort">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MatchID" Type="Int32" Nullable="false" />
+          <Property Name="Video" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="VideoMIME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Match" Relationship="LeagueDBModel.FKTempsForts475942" FromRole="TempsFort" ToRole="Match" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quanttity" Type="Int32" Nullable="false" />
+          <Property Name="Type_ticketID" Type="Int32" Nullable="false" />
+          <Property Name="MatchID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Match" Relationship="LeagueDBModel.FKTicket539457" FromRole="Ticket" ToRole="Match" />
+          <NavigationProperty Name="Supporteur_Ticket" Relationship="LeagueDBModel.FKSupporteur703134" FromRole="Ticket" ToRole="Supporteur_Ticket" />
+          <NavigationProperty Name="Type_ticket" Relationship="LeagueDBModel.FKTicket670194" FromRole="Ticket" ToRole="Type_ticket" />
+        </EntityType>
+        <EntityType Name="Trainer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TeamID" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PhotoMIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Team" Relationship="LeagueDBModel.FKTrainer802788" FromRole="Trainer" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="Transfert">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ManagerID" Type="Int32" Nullable="false" />
+          <Property Name="ManagerID2" Type="Int32" Nullable="false" />
+          <Property Name="PlayerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Manager" Relationship="LeagueDBModel.FKTransfert129094" FromRole="Transfert" ToRole="Manager" />
+          <NavigationProperty Name="Manager1" Relationship="LeagueDBModel.FKTransfert179754" FromRole="Transfert" ToRole="Manager" />
+          <NavigationProperty Name="Player" Relationship="LeagueDBModel.FKTransfert309227" FromRole="Transfert" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Type_ticket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tickets" Relationship="LeagueDBModel.FKTicket670194" FromRole="Type_ticket" ToRole="Ticket" />
+        </EntityType>
+        <Association Name="FKAd986610">
+          <End Type="LeagueDBModel.League" Role="League" Multiplicity="1" />
+          <End Type="LeagueDBModel.Ad" Role="Ad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="League">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ad">
+              <PropertyRef Name="LeagueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPicture952090">
+          <End Type="LeagueDBModel.Ad" Role="Ad" Multiplicity="0..1" />
+          <End Type="LeagueDBModel.Picture" Role="Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="AdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKAvertissem112910">
+          <End Type="LeagueDBModel.Match" Role="Match" Multiplicity="1" />
+          <End Type="LeagueDBModel.Avertissement" Role="Avertissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avertissement">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKAvertissem459964">
+          <End Type="LeagueDBModel.Carton" Role="Carton" Multiplicity="1" />
+          <End Type="LeagueDBModel.Avertissement" Role="Avertissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carton">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avertissement">
+              <PropertyRef Name="CartonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKAvertissem741880">
+          <End Type="LeagueDBModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="LeagueDBModel.Avertissement" Role="Avertissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avertissement">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKMatch994206">
+          <End Type="LeagueDBModel.Day" Role="Day" Multiplicity="1" />
+          <End Type="LeagueDBModel.Match" Role="Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Day">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="DayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEvenement936763">
+          <End Type="LeagueDBModel.Match" Role="Match" Multiplicity="1" />
+          <End Type="LeagueDBModel.Evenement" Role="Evenement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Evenement">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPicture973857">
+          <End Type="LeagueDBModel.Evenement" Role="Evenement" Multiplicity="0..1" />
+          <End Type="LeagueDBModel.Picture" Role="Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evenement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="EvenementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKGoal111870">
+          <End Type="LeagueDBModel.Match" Role="Match" Multiplicity="1" />
+          <End Type="LeagueDBModel.Goal" Role="Goal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Goal">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKGoal259159">
+          <End Type="LeagueDBModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="LeagueDBModel.Goal" Role="Goal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Goal">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKpublicites132669">
+          <End Type="LeagueDBModel.League" Role="League" Multiplicity="1" />
+          <End Type="LeagueDBModel.publicite" Role="publicite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="League">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="publicite">
+              <PropertyRef Name="LeagueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTeam183033">
+          <End Type="LeagueDBModel.Manager" Role="Manager" Multiplicity="0..1" />
+          <End Type="LeagueDBModel.Team" Role="Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manager">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTransfert129094">
+          <End Type="LeagueDBModel.Manager" Role="Manager" Multiplicity="1" />
+          <End Type="LeagueDBModel.Transfert" Role="Transfert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manager">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transfert">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTransfert179754">
+          <End Type="LeagueDBModel.Manager" Role="Manager" Multiplicity="1" />
+          <End Type="LeagueDBModel.Transfert" Role="Transfert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manager">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transfert">
+              <PropertyRef Name="ManagerID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKMatch127456">
+          <End Type="LeagueDBModel.Team" Role="Team" Multiplicity="1" />
+          <End Type="LeagueDBModel.Match" Role="Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKMatch149729">
+          <End Type="LeagueDBModel.Stadium" Role="Stadium" Multiplicity="1" />
+          <End Type="LeagueDBModel.Match" Role="Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stadium">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="StadiumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKMatch63941">
+          <End Type="LeagueDBModel.Team" Role="Team" Multiplicity="1" />
+          <End Type="LeagueDBModel.Match" Role="Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="TeamID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRating397714">
+          <End Type="LeagueDBModel.Match" Role="Match" Multiplicity="1" />
+          <End Type="LeagueDBModel.Rating" Role="Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTempsForts475942">
+          <End Type="LeagueDBModel.Match" Role="Match" Multiplicity="1" />
+          <End Type="LeagueDBModel.TempsFort" Role="TempsFort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TempsFort">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTicket539457">
+          <End Type="LeagueDBModel.Match" Role="Match" Multiplicity="1" />
+          <End Type="LeagueDBModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Match">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="MatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPicture169779">
+          <End Type="LeagueDBModel.publicite" Role="publicite" Multiplicity="0..1" />
+          <End Type="LeagueDBModel.Picture" Role="Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publicite">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="publicitesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPlayer840970">
+          <End Type="LeagueDBModel.Team" Role="Team" Multiplicity="1" />
+          <End Type="LeagueDBModel.Player" Role="Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTransfert309227">
+          <End Type="LeagueDBModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="LeagueDBModel.Transfert" Role="Transfert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transfert">
+              <PropertyRef Name="PlayerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKRating243808">
+          <End Type="LeagueDBModel.Supporteur" Role="Supporteur" Multiplicity="1" />
+          <End Type="LeagueDBModel.Rating" Role="Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supporteur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="SupporteurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKStadium202267">
+          <End Type="LeagueDBModel.Team" Role="Team" Multiplicity="0..1" />
+          <End Type="LeagueDBModel.Stadium" Role="Stadium" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Stadium">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSupporteur775901">
+          <End Type="LeagueDBModel.Supporteur" Role="Supporteur" Multiplicity="1" />
+          <End Type="LeagueDBModel.Supporteur_Ticket" Role="Supporteur_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supporteur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supporteur_Ticket">
+              <PropertyRef Name="SupporteurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKSupporteur703134">
+          <End Type="LeagueDBModel.Ticket" Role="Ticket" Multiplicity="1" />
+          <End Type="LeagueDBModel.Supporteur_Ticket" Role="Supporteur_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supporteur_Ticket">
+              <PropertyRef Name="TicketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTrainer802788">
+          <End Type="LeagueDBModel.Team" Role="Team" Multiplicity="1" />
+          <End Type="LeagueDBModel.Trainer" Role="Trainer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trainer">
+              <PropertyRef Name="TeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKTicket670194">
+          <End Type="LeagueDBModel.Type_ticket" Role="Type_ticket" Multiplicity="1" />
+          <End Type="LeagueDBModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_ticket">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="Type_ticketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Match_Arbitre">
+          <End Type="LeagueDBModel.Match" Role="Match" Multiplicity="*" />
+          <End Type="LeagueDBModel.Arbitre" Role="Arbitre" Multiplicity="*" />
+        </Association>
+        <Association Name="Player_Suspension">
+          <End Type="LeagueDBModel.Suspension" Role="Suspension" Multiplicity="*" />
+          <End Type="LeagueDBModel.Player" Role="Player" Multiplicity="*" />
+        </Association>
+        <Association Name="Team_Formation">
+          <End Type="LeagueDBModel.Formation" Role="Formation" Multiplicity="*" />
+          <End Type="LeagueDBModel.Team" Role="Team" Multiplicity="*" />
+        </Association>
+        <Association Name="ToBeReplaced">
+          <End Type="LeagueDBModel.Match" Role="Match" Multiplicity="*" />
+          <End Type="LeagueDBModel.Player" Role="Player" Multiplicity="*" />
+        </Association>
+        <Association Name="ToBeSubstitute">
+          <End Type="LeagueDBModel.Player" Role="Player" Multiplicity="*" />
+          <End Type="LeagueDBModel.Match" Role="Match" Multiplicity="*" />
+        </Association>
+        <Association Name="ToBeTute">
+          <End Type="LeagueDBModel.Player" Role="Player" Multiplicity="*" />
+          <End Type="LeagueDBModel.Match" Role="Match" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LeagueDBModelStoreContainer" CdmEntityContainer="LeagueDBEntities">
+          <EntitySetMapping Name="Ads">
+            <EntityTypeMapping TypeName="LeagueDBModel.Ad">
+              <MappingFragment StoreEntitySet="Ad">
+                <ScalarProperty Name="LeagueID" ColumnName="LeagueID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Arbitres">
+            <EntityTypeMapping TypeName="LeagueDBModel.Arbitre">
+              <MappingFragment StoreEntitySet="Arbitre">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Avertissements">
+            <EntityTypeMapping TypeName="LeagueDBModel.Avertissement">
+              <MappingFragment StoreEntitySet="Avertissement">
+                <ScalarProperty Name="CartonID" ColumnName="CartonID" />
+                <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cartons">
+            <EntityTypeMapping TypeName="LeagueDBModel.Carton">
+              <MappingFragment StoreEntitySet="Carton">
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Days">
+            <EntityTypeMapping TypeName="LeagueDBModel.Day">
+              <MappingFragment StoreEntitySet="Day">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evenements">
+            <EntityTypeMapping TypeName="LeagueDBModel.Evenement">
+              <MappingFragment StoreEntitySet="Evenement">
+                <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+                <ScalarProperty Name="Program" ColumnName="Program" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Formations">
+            <EntityTypeMapping TypeName="LeagueDBModel.Formation">
+              <MappingFragment StoreEntitySet="Formation">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goals">
+            <EntityTypeMapping TypeName="LeagueDBModel.Goal">
+              <MappingFragment StoreEntitySet="Goal">
+                <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Specificity" ColumnName="Specificity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leagues">
+            <EntityTypeMapping TypeName="LeagueDBModel.League">
+              <MappingFragment StoreEntitySet="League">
+                <ScalarProperty Name="LogoMIME" ColumnName="LogoMIME" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Managers">
+            <EntityTypeMapping TypeName="LeagueDBModel.Manager">
+              <MappingFragment StoreEntitySet="Manager">
+                <ScalarProperty Name="PhotoMIME" ColumnName="PhotoMIME" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Matches">
+            <EntityTypeMapping TypeName="LeagueDBModel.Match">
+              <MappingFragment StoreEntitySet="Match">
+                <ScalarProperty Name="DayID" ColumnName="DayID" />
+                <ScalarProperty Name="StadiumID" ColumnName="StadiumID" />
+                <ScalarProperty Name="TeamID2" ColumnName="TeamID2" />
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+                <ScalarProperty Name="NumberOfSpectators" ColumnName="NumberOfSpectators" />
+                <ScalarProperty Name="MatchDate" ColumnName="MatchDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="LeagueDBModel.Picture">
+              <MappingFragment StoreEntitySet="Picture">
+                <ScalarProperty Name="EvenementID" ColumnName="EvenementID" />
+                <ScalarProperty Name="publicitesID" ColumnName="publicitesID" />
+                <ScalarProperty Name="AdID" ColumnName="AdID" />
+                <ScalarProperty Name="PhotoMIME" ColumnName="PhotoMIME" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="LeagueDBModel.Player">
+              <MappingFragment StoreEntitySet="Player">
+                <ScalarProperty Name="PhotoMIME" ColumnName="PhotoMIME" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Pseudo" ColumnName="Pseudo" />
+                <ScalarProperty Name="Dorsa" ColumnName="Dorsa" />
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+                <ScalarProperty Name="Nation" ColumnName="Nation" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="publicites">
+            <EntityTypeMapping TypeName="LeagueDBModel.publicite">
+              <MappingFragment StoreEntitySet="publicites">
+                <ScalarProperty Name="VideoMIME" ColumnName="VideoMIME" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="LeagueID" ColumnName="LeagueID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="LeagueDBModel.Rating">
+              <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="SupporteurID" ColumnName="SupporteurID" />
+                <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stadia">
+            <EntityTypeMapping TypeName="LeagueDBModel.Stadium">
+              <MappingFragment StoreEntitySet="Stadium">
+                <ScalarProperty Name="PhotoMIME" ColumnName="PhotoMIME" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+                <ScalarProperty Name="PlaceNumber" ColumnName="PlaceNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supporteurs">
+            <EntityTypeMapping TypeName="LeagueDBModel.Supporteur">
+              <MappingFragment StoreEntitySet="Supporteur">
+                <ScalarProperty Name="PhotoMIME" ColumnName="PhotoMIME" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Pseudo" ColumnName="Pseudo" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supporteur_Ticket">
+            <EntityTypeMapping TypeName="LeagueDBModel.Supporteur_Ticket">
+              <MappingFragment StoreEntitySet="Supporteur_Ticket">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+                <ScalarProperty Name="SupporteurID" ColumnName="SupporteurID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suspensions">
+            <EntityTypeMapping TypeName="LeagueDBModel.Suspension">
+              <MappingFragment StoreEntitySet="Suspension">
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="NumberMatch" ColumnName="NumberMatch" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="LeagueDBModel.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="LogoMIME" ColumnName="LogoMIME" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="PhotoMIME" ColumnName="PhotoMIME" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="MatchsNull" ColumnName="MatchsNull" />
+                <ScalarProperty Name="MatchLosses" ColumnName="MatchLosses" />
+                <ScalarProperty Name="MatchWins" ColumnName="MatchWins" />
+                <ScalarProperty Name="GoalScores" ColumnName="GoalScores" />
+                <ScalarProperty Name="GoalCachs" ColumnName="GoalCachs" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TempsForts">
+            <EntityTypeMapping TypeName="LeagueDBModel.TempsFort">
+              <MappingFragment StoreEntitySet="TempsForts">
+                <ScalarProperty Name="VideoMIME" ColumnName="VideoMIME" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="LeagueDBModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+                <ScalarProperty Name="Type_ticketID" ColumnName="Type_ticketID" />
+                <ScalarProperty Name="Quanttity" ColumnName="Quanttity" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trainers">
+            <EntityTypeMapping TypeName="LeagueDBModel.Trainer">
+              <MappingFragment StoreEntitySet="Trainer">
+                <ScalarProperty Name="PhotoMIME" ColumnName="PhotoMIME" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transferts">
+            <EntityTypeMapping TypeName="LeagueDBModel.Transfert">
+              <MappingFragment StoreEntitySet="Transfert">
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="ManagerID2" ColumnName="ManagerID2" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_ticket">
+            <EntityTypeMapping TypeName="LeagueDBModel.Type_ticket">
+              <MappingFragment StoreEntitySet="Type_ticket">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Match_Arbitre" TypeName="LeagueDBModel.Match_Arbitre" StoreEntitySet="Match_Arbitre">
+            <EndProperty Name="Arbitre">
+              <ScalarProperty Name="ID" ColumnName="ArbitreID" />
+            </EndProperty>
+            <EndProperty Name="Match">
+              <ScalarProperty Name="ID" ColumnName="MatchID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Player_Suspension" TypeName="LeagueDBModel.Player_Suspension" StoreEntitySet="Player_Suspension">
+            <EndProperty Name="Player">
+              <ScalarProperty Name="ID" ColumnName="PlayerID" />
+            </EndProperty>
+            <EndProperty Name="Suspension">
+              <ScalarProperty Name="ID" ColumnName="SuspensionID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Team_Formation" TypeName="LeagueDBModel.Team_Formation" StoreEntitySet="Team_Formation">
+            <EndProperty Name="Team">
+              <ScalarProperty Name="ID" ColumnName="TeamID" />
+            </EndProperty>
+            <EndProperty Name="Formation">
+              <ScalarProperty Name="ID" ColumnName="FormationID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ToBeReplaced" TypeName="LeagueDBModel.ToBeReplaced" StoreEntitySet="ToBeReplaced">
+            <EndProperty Name="Player">
+              <ScalarProperty Name="ID" ColumnName="PlayerID" />
+            </EndProperty>
+            <EndProperty Name="Match">
+              <ScalarProperty Name="ID" ColumnName="MatchID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ToBeSubstitute" TypeName="LeagueDBModel.ToBeSubstitute" StoreEntitySet="ToBeSubstitute">
+            <EndProperty Name="Match">
+              <ScalarProperty Name="ID" ColumnName="MatchID" />
+            </EndProperty>
+            <EndProperty Name="Player">
+              <ScalarProperty Name="ID" ColumnName="PlayerID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ToBeTute" TypeName="LeagueDBModel.ToBeTute" StoreEntitySet="ToBeTute">
+            <EndProperty Name="Match">
+              <ScalarProperty Name="ID" ColumnName="MatchID" />
+            </EndProperty>
+            <EndProperty Name="Player">
+              <ScalarProperty Name="ID" ColumnName="PlayerID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

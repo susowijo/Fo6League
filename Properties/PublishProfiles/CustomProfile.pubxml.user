@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Ce fichier est utilisé par le processus de publication/package de votre projet web. Vous pouvez personnaliser le comportement de ce processus
+en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAOSsndIZMrEySfgP2OQGuCQAAAAACAAAAAAAQZgAAAAEAACAAAADbjeEH99BwgmD+yDaREUkm+R7opOIH8ez564e49smWAgAAAAAOgAAAAAIAACAAAAAiRRZB9CdwiUoah+dtYNmAJ9tsbTnmGcVbUP0CzEsXZiAAAACLD8o8/rTOAhvLlI8MyjWmAvjEWdNKJKyEkCLqPxlSlkAAAAACzlZZeQBv1lv8IKHPogL9+nIMBcuVjHJgrGHC4Ma4SArHmOGzZL/vn22uHxMhSE8gAfZj2/xQyfzPNPunompt</EncryptedPassword>
+    <_PublishTargetUrl>ftp://si360.ca</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>10/23/2017 13:15:18</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>10/23/2017 13:15:20</publishTime>
+    </File>
+    <File Include="bin/Fo6League.dll">
+      <publishTime>03/30/2020 17:24:45</publishTime>
+    </File>
+    <File Include="bin/Fo6League.pdb">
+      <publishTime>03/30/2020 17:24:45</publishTime>
+    </File>
+    <File Include="bin/fr/EntityFramework.resources.dll">
+      <publishTime>10/23/2017 13:15:30</publishTime>
+    </File>
+    <File Include="bin/fr/EntityFramework.SqlServer.resources.dll">
+      <publishTime>10/23/2017 13:15:30</publishTime>
+    </File>
+    <File Include="bin/fr/System.Net.Http.Formatting.resources.dll">
+      <publishTime>11/28/2018 13:00:48</publishTime>
+    </File>
+    <File Include="bin/fr/System.Web.Helpers.resources.dll">
+      <publishTime>11/28/2018 13:04:38</publishTime>
+    </File>
+    <File Include="bin/fr/System.Web.Http.resources.dll">
+      <publishTime>11/28/2018 13:01:14</publishTime>
+    </File>
+    <File Include="bin/fr/System.Web.Http.WebHost.resources.dll">
+      <publishTime>11/28/2018 13:03:06</publishTime>
+    </File>
+    <File Include="bin/fr/System.Web.Mvc.resources.dll">
+      <publishTime>11/28/2018 13:00:00</publishTime>
+    </File>
+    <File Include="bin/fr/System.Web.Razor.resources.dll">
+      <publishTime>11/28/2018 13:00:24</publishTime>
+    </File>
+    <File Include="bin/fr/System.Web.Webpages.Deployment.resources.dll">
+      <publishTime>11/28/2018 13:04:38</publishTime>
+    </File>
+    <File Include="bin/fr/System.Web.Webpages.Razor.resources.dll">
+      <publishTime>11/28/2018 13:04:38</publishTime>
+    </File>
+    <File Include="bin/fr/System.Web.Webpages.resources.dll">
+      <publishTime>11/28/2018 13:04:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/25/2012 11:48:56</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>11/09/2019 00:56:44</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>11/28/2018 12:00:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>11/28/2018 12:04:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>11/28/2018 12:01:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>11/28/2018 12:02:56</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>11/28/2018 11:59:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>11/28/2018 12:00:12</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Deployment.dll">
+      <publishTime>11/28/2018 12:04:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.dll">
+      <publishTime>11/28/2018 12:04:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Razor.dll">
+      <publishTime>11/28/2018 12:04:24</publishTime>
+    </File>
+    <File Include="Content/main.css">
+      <publishTime>10/23/2019 17:47:00</publishTime>
+    </File>
+    <File Include="Font/slick/slick.ttf">
+      <publishTime>10/23/2019 17:47:51</publishTime>
+    </File>
+    <File Include="Font/slick/slick.woff">
+      <publishTime>10/23/2019 17:47:52</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>10/21/2019 08:38:59</publishTime>
+    </File>
+    <File Include="Models/LeagueEntity.edmx.diagram">
+      <publishTime>10/23/2019 17:52:56</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>10/23/2019 17:47:30</publishTime>
+    </File>
+    <File Include="Scripts/jquery.js">
+      <publishTime>10/23/2019 17:47:30</publishTime>
+    </File>
+    <File Include="Scripts/popper.min.js">
+      <publishTime>10/23/2019 17:47:30</publishTime>
+    </File>
+    <File Include="Scripts/rocket-loader.min.js">
+      <publishTime>10/23/2019 17:47:30</publishTime>
+    </File>
+    <File Include="Scripts/theme-main.js">
+      <publishTime>10/23/2019 17:47:30</publishTime>
+    </File>
+    <File Include="Scripts/theme-scripts.js">
+      <publishTime>10/23/2019 17:47:30</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>10/21/2019 08:38:42</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>03/30/2020 16:55:38</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

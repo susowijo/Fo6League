@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LeagueDBModelStoreContainer" CdmEntityContainer="LeagueDBEntities">
+    <EntitySetMapping Name="Ads">
+      <EntityTypeMapping TypeName="LeagueDBModel.Ad">
+        <MappingFragment StoreEntitySet="Ad">
+          <ScalarProperty Name="LeagueID" ColumnName="LeagueID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Arbitres">
+      <EntityTypeMapping TypeName="LeagueDBModel.Arbitre">
+        <MappingFragment StoreEntitySet="Arbitre">
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Avertissements">
+      <EntityTypeMapping TypeName="LeagueDBModel.Avertissement">
+        <MappingFragment StoreEntitySet="Avertissement">
+          <ScalarProperty Name="CartonID" ColumnName="CartonID" />
+          <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cartons">
+      <EntityTypeMapping TypeName="LeagueDBModel.Carton">
+        <MappingFragment StoreEntitySet="Carton">
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Days">
+      <EntityTypeMapping TypeName="LeagueDBModel.Day">
+        <MappingFragment StoreEntitySet="Day">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Evenements">
+      <EntityTypeMapping TypeName="LeagueDBModel.Evenement">
+        <MappingFragment StoreEntitySet="Evenement">
+          <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+          <ScalarProperty Name="Program" ColumnName="Program" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Formations">
+      <EntityTypeMapping TypeName="LeagueDBModel.Formation">
+        <MappingFragment StoreEntitySet="Formation">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goals">
+      <EntityTypeMapping TypeName="LeagueDBModel.Goal">
+        <MappingFragment StoreEntitySet="Goal">
+          <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Specificity" ColumnName="Specificity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Leagues">
+      <EntityTypeMapping TypeName="LeagueDBModel.League">
+        <MappingFragment StoreEntitySet="League">
+          <ScalarProperty Name="LogoMIME" ColumnName="LogoMIME" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Managers">
+      <EntityTypeMapping TypeName="LeagueDBModel.Manager">
+        <MappingFragment StoreEntitySet="Manager">
+          <ScalarProperty Name="PhotoMIME" ColumnName="PhotoMIME" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Matches">
+      <EntityTypeMapping TypeName="LeagueDBModel.Match">
+        <MappingFragment StoreEntitySet="Match">
+          <ScalarProperty Name="DayID" ColumnName="DayID" />
+          <ScalarProperty Name="StadiumID" ColumnName="StadiumID" />
+          <ScalarProperty Name="TeamID2" ColumnName="TeamID2" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="NumberOfSpectators" ColumnName="NumberOfSpectators" />
+          <ScalarProperty Name="MatchDate" ColumnName="MatchDate" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pictures">
+      <EntityTypeMapping TypeName="LeagueDBModel.Picture">
+        <MappingFragment StoreEntitySet="Picture">
+          <ScalarProperty Name="EvenementID" ColumnName="EvenementID" />
+          <ScalarProperty Name="publicitesID" ColumnName="publicitesID" />
+          <ScalarProperty Name="AdID" ColumnName="AdID" />
+          <ScalarProperty Name="PhotoMIME" ColumnName="PhotoMIME" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="LeagueDBModel.Player">
+        <MappingFragment StoreEntitySet="Player">
+          <ScalarProperty Name="PhotoMIME" ColumnName="PhotoMIME" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Pseudo" ColumnName="Pseudo" />
+          <ScalarProperty Name="Dorsa" ColumnName="Dorsa" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="Nation" ColumnName="Nation" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Post" ColumnName="Post" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="publicites">
+      <EntityTypeMapping TypeName="LeagueDBModel.publicite">
+        <MappingFragment StoreEntitySet="publicites">
+          <ScalarProperty Name="VideoMIME" ColumnName="VideoMIME" />
+          <ScalarProperty Name="Video" ColumnName="Video" />
+          <ScalarProperty Name="LeagueID" ColumnName="LeagueID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ratings">
+      <EntityTypeMapping TypeName="LeagueDBModel.Rating">
+        <MappingFragment StoreEntitySet="Rating">
+          <ScalarProperty Name="SupporteurID" ColumnName="SupporteurID" />
+          <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Review" ColumnName="Review" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stadia">
+      <EntityTypeMapping TypeName="LeagueDBModel.Stadium">
+        <MappingFragment StoreEntitySet="Stadium">
+          <ScalarProperty Name="PhotoMIME" ColumnName="PhotoMIME" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="PlaceNumber" ColumnName="PlaceNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supporteurs">
+      <EntityTypeMapping TypeName="LeagueDBModel.Supporteur">
+        <MappingFragment StoreEntitySet="Supporteur">
+          <ScalarProperty Name="PhotoMIME" ColumnName="PhotoMIME" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Pseudo" ColumnName="Pseudo" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supporteur_Ticket">
+      <EntityTypeMapping TypeName="LeagueDBModel.Supporteur_Ticket">
+        <MappingFragment StoreEntitySet="Supporteur_Ticket">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="SupporteurID" ColumnName="SupporteurID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suspensions">
+      <EntityTypeMapping TypeName="LeagueDBModel.Suspension">
+        <MappingFragment StoreEntitySet="Suspension">
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="NumberMatch" ColumnName="NumberMatch" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teams">
+      <EntityTypeMapping TypeName="LeagueDBModel.Team">
+        <MappingFragment StoreEntitySet="Team">
+          <ScalarProperty Name="LogoMIME" ColumnName="LogoMIME" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="PhotoMIME" ColumnName="PhotoMIME" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="MatchsNull" ColumnName="MatchsNull" />
+          <ScalarProperty Name="MatchLosses" ColumnName="MatchLosses" />
+          <ScalarProperty Name="MatchWins" ColumnName="MatchWins" />
+          <ScalarProperty Name="GoalScores" ColumnName="GoalScores" />
+          <ScalarProperty Name="GoalCachs" ColumnName="GoalCachs" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempsForts">
+      <EntityTypeMapping TypeName="LeagueDBModel.TempsFort">
+        <MappingFragment StoreEntitySet="TempsForts">
+          <ScalarProperty Name="VideoMIME" ColumnName="VideoMIME" />
+          <ScalarProperty Name="Video" ColumnName="Video" />
+          <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tickets">
+      <EntityTypeMapping TypeName="LeagueDBModel.Ticket">
+        <MappingFragment StoreEntitySet="Ticket">
+          <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+          <ScalarProperty Name="Type_ticketID" ColumnName="Type_ticketID" />
+          <ScalarProperty Name="Quanttity" ColumnName="Quanttity" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trainers">
+      <EntityTypeMapping TypeName="LeagueDBModel.Trainer">
+        <MappingFragment StoreEntitySet="Trainer">
+          <ScalarProperty Name="PhotoMIME" ColumnName="PhotoMIME" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transferts">
+      <EntityTypeMapping TypeName="LeagueDBModel.Transfert">
+        <MappingFragment StoreEntitySet="Transfert">
+          <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+          <ScalarProperty Name="ManagerID2" ColumnName="ManagerID2" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Type_ticket">
+      <EntityTypeMapping TypeName="LeagueDBModel.Type_ticket">
+        <MappingFragment StoreEntitySet="Type_ticket">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Match_Arbitre" TypeName="LeagueDBModel.Match_Arbitre" StoreEntitySet="Match_Arbitre">
+      <EndProperty Name="Arbitre">
+        <ScalarProperty Name="ID" ColumnName="ArbitreID" />
+      </EndProperty>
+      <EndProperty Name="Match">
+        <ScalarProperty Name="ID" ColumnName="MatchID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Player_Suspension" TypeName="LeagueDBModel.Player_Suspension" StoreEntitySet="Player_Suspension">
+      <EndProperty Name="Player">
+        <ScalarProperty Name="ID" ColumnName="PlayerID" />
+      </EndProperty>
+      <EndProperty Name="Suspension">
+        <ScalarProperty Name="ID" ColumnName="SuspensionID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Team_Formation" TypeName="LeagueDBModel.Team_Formation" StoreEntitySet="Team_Formation">
+      <EndProperty Name="Team">
+        <ScalarProperty Name="ID" ColumnName="TeamID" />
+      </EndProperty>
+      <EndProperty Name="Formation">
+        <ScalarProperty Name="ID" ColumnName="FormationID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ToBeReplaced" TypeName="LeagueDBModel.ToBeReplaced" StoreEntitySet="ToBeReplaced">
+      <EndProperty Name="Player">
+        <ScalarProperty Name="ID" ColumnName="PlayerID" />
+      </EndProperty>
+      <EndProperty Name="Match">
+        <ScalarProperty Name="ID" ColumnName="MatchID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ToBeSubstitute" TypeName="LeagueDBModel.ToBeSubstitute" StoreEntitySet="ToBeSubstitute">
+      <EndProperty Name="Match">
+        <ScalarProperty Name="ID" ColumnName="MatchID" />
+      </EndProperty>
+      <EndProperty Name="Player">
+        <ScalarProperty Name="ID" ColumnName="PlayerID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ToBeTute" TypeName="LeagueDBModel.ToBeTute" StoreEntitySet="ToBeTute">
+      <EndProperty Name="Match">
+        <ScalarProperty Name="ID" ColumnName="MatchID" />
+      </EndProperty>
+      <EndProperty Name="Player">
+        <ScalarProperty Name="ID" ColumnName="PlayerID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
