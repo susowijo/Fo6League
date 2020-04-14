@@ -1,0 +1,93 @@
+﻿@model IEnumerable<League.Models.Team>
+
+@{
+    ViewBag.Title = "";
+}
+<div class="section-title" style="background:url(~/Img/slide/1.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Liste d'equipes</h1>
+            </div>
+            <div class="col-md-4">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                        <li>Vous êtes ici</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="content-info">
+
+    <div class="portfolioFilter">
+        <div class="container">
+            <h5><i class="fa fa-filter" aria-hidden="true"></i>Filter By:</h5>
+            <a href="#" data-filter="*" class="current">Show All</a>
+            <a href="#" data-filter=".group-a">Group A</a>
+            <a href="#" data-filter=".group-b">Group B</a>
+            <a href="#" data-filter=".group-c">Group C</a>
+            <a href="#" data-filter=".group-d">Group D</a>
+            <a href="#" data-filter=".group-e">Group E</a>
+            <a href="#" data-filter=".group-f">Group F</a>
+            <a href="#" data-filter=".group-g">Group G</a>
+            <a href="#" data-filter=".group-h">Group H</a>
+        </div>
+    </div>
+
+    <button class="btn btn-dark text-white text-center" style="width: 20%; margin: auto">
+        @Html.ActionLink("Ajouter une Equipe", "Create", new { @class = "text-white" })
+    </button>
+    <div class="container padding-top">
+        <div class="row portfolioContainer">
+
+            @foreach (var item in Model)
+            {
+
+
+                <div class="col-md-6 col-lg-4 col-xl-3 group-a">
+                    <div class="item-team">
+                        <div class="head-team">
+                            @{
+                                var imgSrcP = "";
+                                var imgSrcL = "";
+                                if (item.Photo != null)
+                                {
+                                    var base64P = Convert.ToBase64String(item.Photo);
+                                    imgSrcP = String.Format("data:" + item.PhotoMIME + ";base64,{0}", base64P);
+                                }
+                                if (item.Logo != null)
+                                {
+                                    var base64L = Convert.ToBase64String(item.Logo);
+                                    imgSrcL = String.Format("data:" + item.PhotoMIME + ";base64,{0}", base64L);
+                                }
+                            }
+                            <img src="@imgSrcP" alt="location-team">
+                            <div class="overlay">@Html.ActionLink("+", "Details", new { id = item.ID })</div>
+                        </div>
+                        <div class="info-team">
+                            <span class="logo-team">
+                                <img src="@imgSrcL" alt="logo-team">
+                            </span>
+                            <h4>@item.Name</h4>
+                            <span class="location-team">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                Stade
+                            </span>
+                            <span class="group-team">
+                                <i class="fa fa-trophy" aria-hidden="true"></i>
+                                ( @item.Points )  Points
+                            </span>
+                        </div>
+                        <a href="single-team.html" class="btn">Details <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</section>

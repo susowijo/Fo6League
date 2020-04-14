@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta name="keywords" content="Fo6 Immature league" />
+    <meta name="description" content="Fo6 Immature league">
+    <meta name="author" content="iwthemes.com">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/Content/main.css" rel="stylesheet" media="screen">
+
+    <link rel="shortcut icon" href="~/Img/favicon.png">
+    <link rel="apple-touch-icon" href="~/Img/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Img/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Img/icons/apple-touch-icon-114x114.png">
+
+
+    <!-- Bootstrap core CSS-->
+
+    @Styles.Render("~/Content/main.css")
+</head>
+<body>
+
+    <div id="layout">
+
+        <header>
+
+            <div class="headerbox">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+
+                        <div class="col">
+                            <div class="logo">
+                                <a href="index.html" title="Return Home">
+                                    <img src="~/Img/logo.png" alt="Logo" class="logo_img">
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div class="col">
+                            <div class="adds">
+                                <a href="#" target="_blank">
+                                    <img src="~/Img/adds/banner.jpg" alt="" class="img-responsive">
+                                </a>
+                            </div>
+
+                            <a class="mobile-nav" href="#mobile-nav"><i class="fa fa-bars"></i></a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+        @if (Request.Url.AbsolutePath != "/Account/Login")
+        {
+            <nav class="mainmenu">
+                <div class="container">
+
+                    <ul class="sf-menu" id="menu">
+                        <li class="current">
+                            <a href="index.html">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="#">Fo6 League</a>
+                            <div class="sf-mega">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h5><i class="fa fa-trophy" aria-hidden="true"></i>Fo6 immature League</h5>
+                                        <ul>
+                                            <li><a href="table-point.html">Le classement</a></li>
+                                            <li><a href="fixtures.html">Les matchs à venir</a></li>
+                                            <li><a href="groups.html">Les Groupes</a></li>
+                                            <li><a href="news-left-sidebar.html">Les informations</a></li>
+                                            <li><a href="contact.html">Nous contacter</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h5><i class="fa fa-users" aria-hidden="true"></i> Les meilleures équipes</h5>
+                                        <div class="img-hover">
+                                            <img src="~/Img/blog/1.jpg" alt="" class="img-responsive">
+                                            <div class="overlay"><a href="teams.html">+</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h5><i class="fa fa-futbol-o" aria-hidden="true"></i> Les meilleurs buteurs</h5>
+                                        <div class="img-hover">
+                                            <img src="~/Img/blog/2.jpg" alt="" class="img-responsive">
+                                            <div class="overlay"><a href="players.html">+</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h5><i class="fa fa-gamepad" aria-hidden="true"></i> Les tops buts</h5>
+                                        <div class="img-hover">
+                                            <img src="~/Img/blog/3.jpg" alt="" class="img-responsive">
+                                            <div class="overlay"><a href="results.html">+</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>@Html.RouteLink("Les équipes", new { action = "Index", controller = "Teams" })  </li>
+                        <li>@Html.RouteLink("Les joueurs", new { action = "Index", controller = "Players" })</li>
+                        <li>@Html.RouteLink("Les mangers", new { action = "Index", controller = "Managers" })</li>
+                        <li>@Html.RouteLink("Les entraineurs", new { action = "Index", controller = "Trainers" })</li>
+                        <li>@Html.RouteLink("Les arbitres", new { action = "Index", controller = "Arbitres" })</li>
+                        <li>@Html.RouteLink("Programme", new { action = "Index", controller = "Matches" })</li>
+                        <li><a href="results.html">Résulstats</a> </li>
+                        <li><a href="table-point.html">Classement</a></li>
+                        <li>
+                            <a href="#">Plus</a>
+                            <div class="sf-mega">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <ul>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li>@Html.RouteLink("Connexion", new { action = "Login", controller = "Account" })</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+
+            <div id="mobile-nav">
+
+                <ul>
+                    <li>
+                        <a href="index.html">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="#">Fo6 League</a>
+                        <ul>
+                            <li>
+                                <a href="#">Fo6 immature League</a>
+                                <ul>
+                                    <li><a href="table-point.html">Le classement</a></li>
+                                    <li><a href="fixtures.html">Les matchs à venir</a></li>
+                                    <li><a href="groups.html">Les Groupes</a></li>
+                                    <li><a href="news-left-sidebar.html">Les informations</a></li>
+                                    <li><a href="contact.html">Nous contacter</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="teams.html">Les meilleures équipes</a></li>
+                            <li><a href="players.html">Les meilleurs buteurs</a></li>
+                            <li><a href="results.html">Les tops buts</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="teams.html">Les équipes</a>  </li>
+                    <li><a href="players.html">Les joueurs</a></li>
+                    <li><a href="fixtures.html">Programme</a></li>
+                    <li><a href="results.html">Résulstats</a> </li>
+                    <li><a href="table-point.html">Classement</a></li>
+                    <li><a href="groups.html">Groupes</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+            </div>
+        }
+
+        @RenderBody()
+
+        @if (Request.Url.AbsolutePath != "/Account/Login")
+        {
+            <div class="section-newsletter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                <h2>Entrez votre adresse e-mail et <span class="text-resalt">inscrivez-vous</span> à notre newsletter.</h2>
+                                <p>Profitez des dernières actualités en vous inscrivant</p>
+                            </div>
+                            <form id="newsletterForm" action="php/mailchip/newsletter-subscribe.php">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-envelope"></i>
+                                            </span>
+                                            <input class="form-control" placeholder="Votre nom" name="name" type="text" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-envelope"></i>
+                                            </span>
+                                            <input class="form-control" placeholder="Votre  email" name="email" type="email" required="required">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-primary" type="submit" name="subscribe">S'INSCRIRE</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="result-newsletter"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="instagram-btn">
+                <div class="btn-instagram">
+                    <i class="fa fa-instagram"></i>
+                    FOLLOW
+                    <a href="https://www.instagram.com/fo6immatureleaugue/" target="_blank">&#64;Fo6 Immature League</a>
+                </div>
+            </div>
+            <div class="content-instagram">
+                <div id="instafeed"></div>
+
+            </div>
+
+            <footer id="footer">
+
+                <div class="top-footer">
+
+                    <div class="col-lg-12">
+                        <div class="logo-footer">
+                            <h2>Fo6 Immature League</h2>
+                        </div>
+                    </div>
+
+
+                    <ul class="social">
+                        <li>
+                            <div>
+                                <a href="#" class="facebook">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#" class="twitter-icon">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#" class="vimeo">
+                                    <i class="fa fa-vimeo-square"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#" class="google-plus">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#" class="youtube">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+                <div class="links-footer">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-lg-2 col-md-5 col-sm-5">
+                                <div class="info-links">
+                                    <h5>Organisation</h5>
+                                    <ul>
+                                        <li><a href="#">Volunteers</a></li>
+                                        <li><a href="#">Committees</a></li>
+                                        <li><a href="#">Official Documents</a></li>
+                                        <li><a href="#">Terms of Service</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-7 col-sm-7">
+                                <div class="info-links">
+                                    <h5>Groups</h5>
+                                    <ul class="columns">
+                                        <li><a href="#">GROUP A</a></li>
+                                        <li><a href="#">GROUP B</a></li>
+                                        <li><a href="#">GROUP C</a></li>
+                                        <li><a href="#">GROUP D</a></li>
+                                        <li><a href="#">GROUP E</a></li>
+                                        <li><a href="#">GROUP F</a></li>
+                                        <li><a href="#">GROUP G</a></li>
+                                        <li><a href="#">GROUP H</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-2 col-md-5 col-sm-5">
+                                <div class="info-links">
+                                    <h5>Liens utiles</h5>
+                                    <ul>
+                                        <li><a href="#">Statistics</a></li>
+                                        <li><a href="#">Equipes</a></li>
+                                        <li><a href="#">Joueurs</a></li>
+                                        <li><a href="#">Achat de billet</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-md-7 col-sm-7">
+                                <div class="info-links">
+                                    <h5>Partenaires</h5>
+                                    <ul class="columns">
+                                        <li><a href="#">FIFA</a></li>
+                                        <li><a href="#">CAF</a></li>
+                                        <li><a href="#">FECAFOOT</a></li>
+                                        <li><a href="#">XSolution</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </footer>
+
+
+            <div class="footer-down">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p><b>&copy; 2019 Fo6 Immature League</b>. All Rights Reserved | Carved by <a href="http://xsolutionsi.com"> XSolution</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+   
+</body>
+</html>

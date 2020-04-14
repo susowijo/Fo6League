@@ -1,0 +1,112 @@
+﻿@model League.Models.Team
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Team</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoalCachs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoalCachs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoalScores)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoalScores)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatchWins)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatchWins)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatchLosses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatchLosses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatchsNull)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatchsNull)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Points)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Points)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoMIME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoMIME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogoMIME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogoMIME)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

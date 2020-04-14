@@ -1,0 +1,86 @@
+﻿@model IEnumerable<League.Models.Match>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="section-title" style="background:url(img/slide/1.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Programme de matchs</h1>
+            </div>
+            <div class="col-md-4">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li>Vous êtes ici</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="content-info">
+    <div class="container paddings-mini">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="clear-title">Matchs</h3>
+            </div>
+            <div class="col-lg-12">
+                <button class="btn btn-primary text-white text-center">
+                    @Html.ActionLink("Generer le programme", "Create", new { @class = "text-white" })
+                </button>
+            </div>
+            <div class="col-lg-12">
+                <table class="table-striped table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <th>Equipe A</th>
+                            <th class="text-center">VS</th>
+                            <th>Equipe B</th>
+                            <th>Détails</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            var imgSrcT = "";
+                            var imgSrcT1 = "";
+                            if (item.Team.Logo != null)
+                            {
+                                var base64P = Convert.ToBase64String(item.Team.Logo);
+                                imgSrcT = String.Format("data:" + item.Team.PhotoMIME + ";base64,{0}", base64P);
+                            }
+                            if (item.Team.Logo != null)
+                            {
+                                var base64L = Convert.ToBase64String(item.Team1.Logo);
+                                imgSrcT1 = String.Format("data:" + item.Team1.PhotoMIME + ";base64,{0}", base64L);
+                            }
+
+                            <tr>
+                                <td>
+                                    <img src="@imgSrcT" alt="location-team">
+                                    <strong>@item.Team.Name</strong><br>
+                                </td>
+                                <td class="text-center">Vs</td>
+                                <td>
+                                    <img src="@imgSrcT1" alt="location-team">
+                                    <strong>@item.Team1.Name</strong><br>
+                                </td>
+                                <td>
+                                    Dec 19, 07:00<br>
+                                    <small class="meta-text">@((item.Stadium)?.Name), @((item.Stadium)?.City)</small>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

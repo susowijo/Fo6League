@@ -1,0 +1,92 @@
+﻿@model IEnumerable<League.Models.Player>
+
+@{
+    ViewBag.Title = "Les joueurs";
+}
+
+<div class="section-title" style="background:url(img/slide/1.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Liste des joueurs</h1>
+            </div>
+            <div class="col-md-4">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li>Vous êtes ici</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="content-info">
+
+    <div class="portfolioFilter">
+        <div class="container">
+            <h5><i class="fa fa-filter" aria-hidden="true"></i>Filter By:</h5>
+            <a href="#" data-filter="*" class="current">Tout</a>
+            <a href="#" data-filter=".forward">Attaquant</a>
+            <a href="#" data-filter=".defender">Defenseur</a>
+            <a href="#" data-filter=".midfielder">Milieu</a>
+            <a href="#" data-filter=".goalkeeper">Gardien</a>
+        </div>
+    </div>
+
+    <button class="btn btn-dark text-white text-center" style="width: 20%; margin: auto">
+        @Html.ActionLink("Ajouter un Joueur", "Create", new { @class = "text-white" })
+    </button>
+
+    <div class="container padding-top">
+        <div class="row portfolioContainer">
+            @foreach (var item in Model)
+            {
+                <div class="col-xl-3 col-lg-4 col-md-6 forward">
+                    <div class="item-player">
+                        <div class="head-player">
+                            @{
+                                var imgSrcP = "";
+                                var imgSrcL = "";
+                                if (item.Photo != null)
+                                {
+                                    var base64P = Convert.ToBase64String(item.Photo);
+                                    imgSrcP = String.Format("data:" + item.PhotoMIME + ";base64,{0}", base64P);
+                                }
+                                if (item.Team.Logo != null)
+                                {
+                                    var base64L = Convert.ToBase64String(item.Team.Logo);
+                                    imgSrcL = String.Format("data:" + item.Team.PhotoMIME + ";base64,{0}", base64L);
+                                }
+                            }
+                            <img src="@imgSrcP" alt="location-team">
+                            <div class="overlay">@Html.ActionLink("+", "Details", new { id = item.ID })</div>
+                        </div>
+                        <div class="info-player">
+                            <span class="number-player">
+                                @item.Dorsa
+                            </span>
+                            <h4>
+                                @item.Name
+                                <span>@item.Post</span>
+                            </h4>
+                            <ul>
+                                <li>
+                                    <strong>NATIONALITE</strong> <span>@item.Nation</span>
+                                </li>
+                                <li>
+                                    <strong>Equipe</strong> <span><img src="@imgSrcL" alt="">@item.Team.Name</span>
+                                </li>
+                                <li><strong>MATCHS:</strong> <span>0</span></li>
+                                <li><strong>AGE:</strong> <span>@item.Age</span></li>
+                            </ul>
+                        </div>
+                        <a href="single-player.html" class="btn">Details <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

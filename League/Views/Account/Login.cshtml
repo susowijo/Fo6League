@@ -1,0 +1,54 @@
+﻿@model League.Models.Account
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="d-flex mt-5 justify-content-center align-content-center">
+        <div class="card w-50 bg-white border-0">
+            <div class="card-header font-weight-bold bg-white border-0  text-center">
+                <div class="h2">
+                    Connexion
+                </div>
+                <a asp-action="Create" class="btn btn-link p-0 btn-sm" asp-controller="Donneurs"> Je n'ai pas de compte </a>
+            </div>
+            <div class="card-body">
+                <div class="form-horizontal">
+
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger"> @ViewBag.Error </div>
+                    }
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-12">
+                            @Html.LabelFor(model => model.Pseudo, htmlAttributes: new { @class = "control-label " })
+                            @Html.EditorFor(model => model.Pseudo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Pseudo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-12">
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-12">
+                            <input type="submit" value="Connexion" class="btn btn-primary" />
+                            <a asp-action="forgoutpassword" class="btn btn-link" asp-controller="Utilisateurs"> Mot de passe oublié </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
